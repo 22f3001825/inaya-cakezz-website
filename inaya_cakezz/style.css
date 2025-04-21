@@ -1951,64 +1951,6 @@ h2::after, h3::after {
   margin-left: 0.5rem;
 }
 
-/* Enhanced Dark Mode Support */
-@media (prefers-color-scheme: dark) {
-  .whatsapp-form {
-    background-color: var(--form-bg-dark);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    color: var(--text-dark);
-  }
-  
-  .whatsapp-form .form-control {
-    background-color: var(--input-bg-dark);
-    border-color: var(--input-border-dark);
-    color: var(--text-dark);
-  }
-  
-  .whatsapp-form label,
-  .whatsapp-form .form-check-label {
-    color: var(--text-muted-dark);
-  }
-  
-  .whatsapp-form .form-control::placeholder {
-    color: var(--text-muted-dark);
-  }
-  
-  .whatsapp-form .form-control:focus {
-    background-color: var(--input-bg-dark);
-  }
-  
-  .whatsapp-form .form-floating .form-control:focus ~ label,
-  .whatsapp-form .form-floating .form-control:not(:placeholder-shown) ~ label {
-    background-color: var(--form-bg-dark);
-  }
-  
-  .whatsapp-form-title {
-    color: var(--whatsapp-primary);
-  }
-  
-  .whatsapp-form .file-upload-btn {
-    background-color: var(--input-bg-dark);
-    border-color: var(--input-border-dark);
-  }
-  
-  .whatsapp-form .file-upload-btn:hover {
-    background-color: rgba(61, 61, 61, 0.8);
-  }
-  
-  .form-success-indicator {
-    background-color: rgba(45, 45, 45, 0.95);
-    color: var(--whatsapp-primary);
-  }
-  
-  .success-message {
-    color: var(--text-muted-dark);
-  }
-  
-  .whatsapp-form select.form-control {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23a0a0a0' viewBox='0 0 16 16'%3E%3Cpath d='M8 10.293l4.146-4.147a.5.5 0 01.708.708l-4.5 4.5a.5.5 0 01-.708 0l-4.5-4.5a.5.5 0 01.708-.708L8 10.293z'/%3E%3C/svg%3E");
-  }
-}
 
 /* Print Optimization */
 @media print {
