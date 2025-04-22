@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inaya Cakezz - Premium Cakes in Sasaram</title>
-  <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
   <!-- Header -->
@@ -239,13 +240,13 @@
         <div class="gallery-item">
           <img src="images/birth.png" alt="Birthday Cake">
           <div class="gallery-overlay">
-            <h4>Birthday Special</h4>
+            <h4>Colorful Birthday Special</h4>
           </div>
         </div>
         <div class="gallery-item">
           <img src="images/engagement.png" alt="Themed Cake">
           <div class="gallery-overlay">
-            <h4>Theme Cake</h4>
+            <h4>Superhero Theme Cake</h4>
           </div>
         </div>
         <div class="gallery-item">
@@ -416,22 +417,22 @@
   </div>
 </section>
 
-<!-- Contact Section -->
+<!-- Modified contact form section with WhatsApp ordering -->
 <section id="contact" class="section">
   <div class="container">
-    <h2>Get In Touch</h2>
+    <h2>Order Your Cake</h2>
     <div class="contact-grid">
       <div class="contact-form">
         <h3>Order via WhatsApp</h3>
-        <p>Fill in your details below and click "Order on WhatsApp" to send us your cake request directly!</p>
+        <p>Select your cake details and send your order directly to our team!</p>
         
-        <!-- Form that will generate WhatsApp message when submitted -->
-        <div class="whatsapp-form">
+        <!-- Enhanced WhatsApp Order Form -->
+        <div class="order-form">
           <div class="form-group">
-            <input type="text" id="customer-name" class="form-control" placeholder="Your Name" required>
+            <input type="text" id="customer-name" class="form-control" placeholder="Your Name " required>
           </div>
           <div class="form-group">
-            <input type="tel" id="customer-phone" class="form-control" placeholder="Your Phone Number" required>
+            <input type="tel" id="customer-phone" class="form-control" placeholder="Your Phone Number " required>
           </div>
           <div class="form-group">
             <select id="cake-type" class="form-control" required>
@@ -445,78 +446,122 @@
             </select>
           </div>
           <div class="form-group">
-            <select id="cake-flavor" class="form-control" required>
+            <select id="cake-flavor" class="form-control" required onchange="updatePrice()">
               <option value="" disabled selected>Select Cake Flavor</option>
-              <option value="Chocolate">Chocolate</option>
-              <option value="Blackforest">Blackforest</option>
-              <option value="Butterscotch">Butterscotch</option>
-              <option value="Chocolate Truffle">Chocolate Truffle</option>
-              <option value="Dark Chocolate">Dark Chocolate</option>
-              <option value="Mango">Mango</option>
-              <option value="Pineapple">Pineapple</option>
-              <option value="Rasmalai">Rasmalai</option>
-              <option value="Red Velvet">Red Velvet</option>
-              <option value="Strawberry">Strawberry</option>
-              <option value="Vanilla">Vanilla</option>
-              <option value="White Forest">White Forest</option>
+              <option value="Chocolate" data-premium="0">Chocolate</option>
+              <option value="Blackforest" data-premium="0">Blackforest</option>
+              <option value="Butterscotch" data-premium="0">Butterscotch</option>
+              <option value="Chocolate Truffle" data-premium="1">Chocolate Truffle</option>
+              <option value="Dark Chocolate" data-premium="0">Dark Chocolate</option>
+              <option value="Mango" data-premium="0">Mango</option>
+              <option value="Pineapple" data-premium="0">Pineapple</option>
+              <option value="Rasmalai" data-premium="0">Rasmalai</option>
+              <option value="Red Velvet" data-premium="1">Red Velvet</option>
+              <option value="Strawberry" data-premium="0">Strawberry</option>
+              <option value="Vanilla" data-premium="0">Vanilla</option>
+              <option value="White Forest" data-premium="0">White Forest</option>
             </select>
           </div>
           <div class="form-group">
-            <select id="cake-size" class="form-control" required>
+            <select id="cake-size" class="form-control" required onchange="updatePrice()">
               <option value="" disabled selected>Select Cake Size</option>
-              <option value="0.5 kg">0.5 kg</option>
-              <option value="1 kg">1 kg</option>
-              <option value="1.5 kg">1.5 kg</option>
-              <option value="2 kg">2 kg</option>
-              <option value="2.5 kg">2.5 kg</option>
-              <option value="3 kg">3 kg</option>
-              <option value="3.5 kg">3.5 kg</option>
-              <option value="4 kg">4 kg</option>
+              <option value="0.5">0.5 kg</option>
+              <option value="1">1 kg</option>
+              <option value="1.5">1.5 kg</option>
+              <option value="2">2 kg</option>
+              <option value="2.5">2.5 kg</option>
+              <option value="3">3 kg</option>
+              <option value="3.5">3.5 kg</option>
+              <option value="4">4 kg</option>
             </select>
           </div>
           <div class="form-group">
-            <textarea id="custom-message" class="form-control" placeholder="Additional details about your order..."></textarea>
+            <input type="text" id="delivery-date" class="form-control" placeholder="Delivery Date (DD/MM/YYYY)" required>
+          </div>
+          <div class="form-group">
+            <select id="delivery-time" class="form-control">
+              <option value="" disabled selected>Preferred Delivery Time (Optional)</option>
+              <option value="Morning (9AM-12PM)">Morning (9AM-12PM)</option>
+              <option value="Afternoon (12PM-4PM)">Afternoon (12PM-4PM)</option>
+              <option value="Evening (4PM-8PM)">Evening (4PM-8PM)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <select id="payment-preference" class="form-control">
+              <option value="" disabled selected>Payment Preference (Optional)</option>
+              <option value="UPI">UPI (Google Pay/PhonePe/Paytm)</option>
+              <option value="Cash on Delivery">Cash on Delivery</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <textarea id="custom-message" class="form-control" placeholder="Special instructions, design details, or message on cake..."></textarea>
           </div>
           
-          <button type="button" id="whatsapp-order-btn" class="btn whatsapp-btn">
-            <img src="images/whatsapp.png" alt="WhatsApp" class="whatsapp-icon"> Order on WhatsApp
-          </button>
+          <div class="price-display">
+            <p>Estimated Price: <span id="total-price">₹0</span></p>
+            <p class="price-note">Final pricing will be confirmed by our team via WhatsApp</p>
+          </div>
+          
+          <div class="payment-note">
+            <i class="fas fa-info-circle"></i>
+            <p>Payment methods will be shared via WhatsApp after order confirmation.</p>
+          </div>
+          
+          <div class="order-buttons">
+            <button type="button" id="whatsapp-order-btn" class="btn whatsapp-btn">
+              <i class="fab fa-whatsapp"></i> Send Order on WhatsApp
+            </button>
+          </div>
         </div>
       </div>
       
-      <div class="contact-info">
-        <h3>Contact Information</h3>
-        <div class="contact-detail">
-          <div class="contact-icon">
-            <i class="fas fa-map-marker-alt"></i>
-          </div>
-          <div>
-            <p>Shivsagar, Sasaram</p>
-            <p>Bihar, India</p>
-          </div>
+      <div class="order-summary">
+        <h3>Order Summary</h3>
+        <div class="summary-content" id="order-summary">
+          <p class="summary-item">Please select cake flavor and size</p>
         </div>
-        <div class="contact-detail">
-          <div class="contact-icon">
-            <i class="fas fa-phone-alt"></i>
-          </div>
-          <div>
-            <p>+91 9588428478</p>
-          </div>
+        <div class="delivery-info">
+          <h4>Free Delivery in Sasaram City</h4>
+          <p><i class="fas fa-clock"></i> Order at least 24 hours in advance</p>
+          <p><i class="fas fa-check-circle"></i> 100% Fresh Ingredients</p>
+          <p><i class="fas fa-certificate"></i> FSSAI Certified</p>
         </div>
-        <div class="contact-detail">
-          <div class="contact-icon">
-            <i class="fas fa-clock"></i>
+        
+        <!-- Contact information -->
+        <div class="contact-info">
+          <h3>Contact Information</h3>
+          <div class="contact-detail">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div>
+              <p>Shivsagar, Sasaram</p>
+              <p>Bihar, India</p>
+            </div>
           </div>
-          <div>
-            <p>Monday - Saturday: 9:00 AM - 8:00 PM</p>
-            <p>Sunday: 10:00 AM - 6:00 PM</p>
+          <div class="contact-detail">
+            <div class="contact-icon">
+              <i class="fas fa-phone-alt"></i>
+            </div>
+            <div>
+              <p>+91 9588428478</p>
+            </div>
           </div>
-        </div>
-        <div class="social-links">
-          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://www.instagram.com/inayacakezz/" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <div class="contact-detail">
+            <div class="contact-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div>
+              <p>Monday - Saturday: 9:00 AM - 8:00 PM</p>
+              <p>Sunday: 10:00 AM - 6:00 PM</p>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/inayacakezz/" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          </div>
         </div>
       </div>
     </div> 
@@ -549,11 +594,11 @@
         <div class="footer-links">
           <h4>Our Services</h4>
           <ul>
-            <li><a href="#">Birthday Cakes</a></li>
-            <li><a href="#">Wedding Cakes</a></li>
-            <li><a href="#">Anniversary Cakes</a></li>
-            <li><a href="#">Photo Cakes</a></li>
-            <li><a href="#">Theme Cakes</a></li>
+            <li><a href="#services">Birthday Cakes</a></li>
+            <li><a href="#services">Wedding Cakes</a></li>
+            <li><a href="#services">Anniversary Cakes</a></li>
+            <li><a href="#services">Photo Cakes</a></li>
+            <li><a href="#services">Theme Cakes</a></li>
           </ul>
         </div>
         <div class="footer-contact">
