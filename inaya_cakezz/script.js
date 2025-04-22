@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const encodedMessage = encodeURIComponent(whatsappMessage);
       
       // Replace with your actual WhatsApp number
-      const whatsappNumber = '91958842847'; // Format: country code + number without +
+      const whatsappNumber = '919588428478'; // Format: country code + number without +
       
       // Create WhatsApp link
       const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
